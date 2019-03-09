@@ -7,7 +7,7 @@
             <!-- <h2 class="text-center mb-4">Register</h2> -->
             <div class="auto-form-wrapper">
                 <div class="logo-wrapper">
-                    <img class="logo" src="{{ asset('images/logo.png') }}" />
+                    <img class="logo-container" src="{{ asset('images/logo.png') }}" />
                     <br/><br/>
                 </div>
                 {!! Form::open(['route' => 'register', 'novalidate'=>'novalidate', 'id'=>'sign_up', 'role' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}

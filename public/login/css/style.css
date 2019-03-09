@@ -408,7 +408,7 @@ form .field-group .wthree-field {
 }
 
 .wthree-field button.btn {
-    background: #fc636b;
+    background: #ee6527;
     border: none;
     color: #fff;
     padding: 11px 15px;
@@ -539,7 +539,7 @@ li:nth-child(2) a,li:nth-child(1) a {
 }
 
 input:checked+.slider {
-    background-color: #fc636b;
+    background-color: #ee6527;
 }
 
 input:focus+.slider {
@@ -695,4 +695,7 @@ input:checked+.slider:before {
    
 }
 
+.logo-container {
+	height: 90px;
+}
 /* -- //Responsive code -- */

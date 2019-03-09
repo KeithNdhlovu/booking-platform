@@ -33,7 +33,7 @@
 		
 		<div class="bottom-grid">
 			<div class="logo">
-				<h1> <a href="index.html"><span class="fa fa-flight"></span> Key</a></h1>
+				<h1> <a href="index.html"><span class="fa fa-flight"></span></a></h1>
 			</div>
 			<div class="links">
 				<ul class="links-unordered-list">
@@ -51,8 +51,8 @@
 		</div>
 		<div class="content-w3ls">
 			<div class="text-center icon">
-				<span class="fa fa-html5">
-					<img src="{{ asset('images/logo.jpg') }}" />
+				<span class="fa">
+					<img class="logo-container" src="{{ asset('images/logo.png') }}" />
 				</span>
 			</div>
 			<div class="content-bottom">

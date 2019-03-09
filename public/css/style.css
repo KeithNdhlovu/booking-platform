@@ -16181,7 +16181,7 @@ ul {
   background: url("../images/auth/login_1.jpg");
   background-size: cover; }
 .auth.register-bg-1 {
-  background: url("../images/auth/register.jpg") center center no-repeat;
+  background: url("../images/auth/register_plane.jpg") center center no-repeat;
   background-size: cover; }
 .auth.theme-one .auto-form-wrapper {
   background: #ffffff;
@@ -16382,3 +16382,8 @@ ul {
   color: #ff4a4a; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.logo-container {
+	height: 90px;
+}
