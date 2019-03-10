@@ -15,7 +15,9 @@
 
 // Homepage Route
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
-Route::get('/booking', 'WelcomeController@booking')->name('booking');
+Route::get('/booking', 'BookingController@booking')->name('booking');
+Route::post('/availability', 'BookingController@availability')->name('availability');
+// Route::post('/availability/list', 'BookingController@availability')->name('availability');
 
 
 // Authentication Routes

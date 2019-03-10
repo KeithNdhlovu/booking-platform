@@ -698,4 +698,16 @@ input:checked+.slider:before {
 .logo-container {
 	height: 90px;
 }
+
+.help-block {
+    /* font-size: 11px; */
+    font-weight: 100; 
+}
+.help-block .error {
+    color: #ff4a4a; 
+}
+  
+.error {
+    color: #ff4a4a; 
+}
 /* -- //Responsive code -- */

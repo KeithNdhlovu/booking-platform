@@ -1,7 +1,7 @@
 @extends('layouts.appClean')
 
 @section('content')
-<div ng-app="registerApp" ng-controller="registerController" class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+<div ng-app="registerApp" ng-controller="registerController" class="content-wrapper d-flex align-items-center auth register-bg-2 theme-one">
     <div class="row w-100">
         <div class="col-sm-6 col-lg-4 mx-auto">
             <!-- <h2 class="text-center mb-4">Register</h2> -->
@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <div ng-if="passwordError" class="form-group">
+                    <div ng-cloak ng-if="passwordError" class="form-group">
                         <span class="help-block">
                             <label class="error"><% passwordError %></label>
                         </span>
@@ -156,7 +156,7 @@
                 {!! Form::close() !!}
             </div>
             <ul class="auth-footer"></ul>
-            <p class="footer-text text-center" style="color: black;">© 2018 blasczykowski.io</p>
+            <p class="footer-text text-center" style="color: black;">© 2019 blasczykowski.io</p>
         </div>
     </div>
 </div>
@@ -208,12 +208,12 @@
                 }
 
                 $scope.onChangeTrigger = function(trigger) {
-                    console.log("onChangeTrigger", trigger)
+
                     $timeout(()=> $('#register-death_trigger_id').selectpicker('refresh'));
                 };
 
                 $scope.onChangePassword = function(password) {
-                    console.log(password)
+
                     if (password.length < 6) {
                         $scope.passwordError = 'Please enter password with at least 6 characters or more'
                     } else {

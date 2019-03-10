@@ -17,7 +17,7 @@ class CreateTranslationsTable extends Migration
             $table->increments('id');
             
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             
             $table->string('from_language');
             $table->string('to_language');

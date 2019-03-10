@@ -1,61 +1,73 @@
-@extends('layouts.appClean')
+@extends('layouts.appCleanLogin')
 
 @section('content')
-<div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-    <div class="row w-100">
-        <div class="col-sm-6 col-lg-4 mx-auto">
-            <div class="auto-form-wrapper">
-                <div class="logo-wrapper">
-                    <img class="logo-container" src="{{ asset('images/logo.png') }}" />
-                    <br/><br/>
-                </div>
-                {!! Form::open(['route' => 'login', 'novalidate'=>'novalidate', 'id'=>'sign_in', 'role' => 'form', 'method' => 'POST'] ) !!}
-                    {{ csrf_field() }}
-                    @if ($errors->any())
-                        <div class="form-group">
-                            @foreach ($errors->all() as $error)
-                                <span class="help-block">
-                                    <label class="error">{{ $error }}</label>
-                                </span>
-                            @endforeach
-                        </div>
-                    @endif
-                    <div class="form-group">
-                        <label class="label">Username</label>
-                        <div class="input-group">
+<div class="layer">
+
+    <div class="bottom-grid">
+        <div class="logo">
+            <h1> <a href="{{ url('/') }}"><span class="fa fa-flight"></span></a></h1>
+        </div>
+        <div class="links">
+            <ul class="links-unordered-list">
+                <li class="active">
+                    <a href="#" class="">Login</a>
+                </li>
+                <li class="">
+                    <a href="{{ url('register') }}" class="">Register</a>
+                </li>
+                <li class="">
+                    <a href="{{ url('booking') }}" class="">Check Availability</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content-w3ls">
+        <div class="text-center icon">
+            <span class="fa">
+                <img class="logo-container" src="{{ asset('images/logo.png') }}" />
+            </span>
+        </div>
+        <div class="content-bottom">
+            {!! Form::open(['route' => 'login', 'novalidate'=>'novalidate', 'id'=>'sign_in', 'role' => 'form', 'method' => 'POST'] ) !!}
+                {{ csrf_field() }}
+                
+                @if ($errors->any())
+                    <div class="form-group text-center ">
+                        @foreach ($errors->all() as $error)
+                            <span class="help-block">
+                                <label class="error">{{ $error }}</label>
+                            </span>
+                        @endforeach
+                        <br><br>
+                    </div>
+                @endif
+
+                <div class="field-group">
+                    <span class="fa fa-user" aria-hidden="true"></span>
+                    <div class="wthree-field">
                         <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                            <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                        </div>
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="label">Password</label>
-                        <div class="input-group">
+                </div>
+                <div class="field-group">
+                    <span class="fa fa-lock" aria-hidden="true"></span>
+                    <div class="wthree-field">
                         <input type="password" class="form-control" name="password" placeholder="*********" required>
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                            <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                        </div>
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary submit-btn btn-block" type="submit">Login</button>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">
-                        
-                    </div>
-                    <div class="text-block text-center my-3">
-                        <span class="text-small font-weight-semibold">Not a member ?</span>
-                        <a href="{{ url('/register') }}" class="text-black text-small">Create new account</a>
-                    </div>
-                {!! Form::close() !!}
-            </div>
-            <ul class="auth-footer"></ul>
-            <p class="footer-text text-center">© 2018 blasczykowski.io</p>
+                </div>
+                <div class="wthree-field">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+                <ul class="list-login">
+                    <li class="switch-agileits">
+                        <label class="switch">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span class="slider round"></span>
+                            keep Logged in
+                        </label>
+                    </li>
+                    <li class="clearfix"></li>
+                </ul>
+            </form>
         </div>
     </div>
 </div>

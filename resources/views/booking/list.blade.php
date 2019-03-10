@@ -2,12 +2,18 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<!-- Required meta tags -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<title>{{ config('app.name', Lang::get('titles.app')) }}</title>
 
-	<title>AirCode.com: Book your flights with ease and convenience</title>
+	<!-- endinject -->
+	<link rel="shortcut icon" href="favicon.png">
+
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
@@ -32,7 +38,7 @@
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-xs-4">
 						<div class="booking-cta">
 							<h1>Book your flight today</h1>
 							<p>Check the availability of your flights, by provinding us with your trip information, otherwise go back by clicking the home button.</p>
@@ -41,9 +47,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-7 col-md-offset-1">
+					<div class="col-xs-7 col-xs-offset-1">
 						<div class="booking-form">
-							<form>
+							{!! Form::open(['route' => 'availability', 'novalidate'=>'novalidate', 'id'=>'availability', 'role' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
 								<div class="form-group">
 									<div class="form-checkbox">
 										<label for="roundtrip">
@@ -53,10 +59,6 @@
 										<label for="one-way">
 											<input type="radio" id="one-way" name="flight-type">
 											<span></span>One way
-										</label>
-										<label for="multi-city">
-											<input type="radio" id="multi-city" name="flight-type">
-											<span></span>Multi-City
 										</label>
 									</div>
 								</div>
@@ -114,7 +116,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<span class="form-label">Travel class</span>
-											<select class="form-control">
+											<select name="" class="form-control">
 												<option>Economy class</option>
 												<option>Business class</option>
 												<option>First class</option>
@@ -126,7 +128,7 @@
 								<div class="form-btn">
 									<button class="submit-btn">Show flights</button>
 								</div>
-							</form>
+							{!! Form::close() !!}
 						</div>
 					</div>
 				</div>

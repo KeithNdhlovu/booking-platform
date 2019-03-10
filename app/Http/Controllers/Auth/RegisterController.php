@@ -59,8 +59,8 @@ class RegisterController extends Controller
             [
                 'first_name'            => 'required',
                 'last_name'             => 'required',
-                'id_number'             => 'required|max:13|unique:user',
-                'email'                 => 'required|email|max:255|unique:user',
+                'id_number'             => 'required|max:13|unique:users',
+                'email'                 => 'required|email|max:255|unique:users',
                 'password'              => 'required|min:6|max:20|confirmed',
                 'password_confirmation' => 'required|same:password',
                 "profile_picture"       => 'required|max:1024', // (max size 1 MB)

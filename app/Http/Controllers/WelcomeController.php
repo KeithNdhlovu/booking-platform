@@ -13,15 +13,4 @@ class WelcomeController extends Controller
     {
         return redirect('login');
     }
-
-    
-    /**
-     * Show the default test home page
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function booking()
-    {
-        return view('booking');
-    }
 }
