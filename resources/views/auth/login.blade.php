@@ -6,7 +6,7 @@
         <div class="col-sm-6 col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
                 <div class="logo-wrapper">
-                    <img class="logo" src="{{ asset('images/logo.png') }}" />
+                    <img class="logo-container" src="{{ asset('images/logo.png') }}" />
                     <br/><br/>
                 </div>
                 {!! Form::open(['route' => 'login', 'novalidate'=>'novalidate', 'id'=>'sign_in', 'role' => 'form', 'method' => 'POST'] ) !!}

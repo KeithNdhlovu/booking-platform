@@ -136,7 +136,7 @@
 	<script>
 	
 		var button = document.getElementById("back-button")
-		button.addEventListner('click', function() {
+		button.addEventListener('click', function() {
 			window.location.href = "{{ url('/') }}";
 		})
 	</script>
