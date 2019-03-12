@@ -99,9 +99,44 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('usersmanagement.show-user')->withUser($user);
+        return view('pages.user.profile')->withUser($user);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showTransactions()
+    {
+        $user = Auth::user();
+
+        return view('pages.user.404')->withUser($user);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showOrders()
+    {
+        $user = Auth::user();
+
+        return view('pages.user.404')->withUser($user);
+    }  
+    
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showTickets()
+    {
+        $user = Auth::user();
+
+        return view('pages.user.404')->withUser($user);
+    }
     /**
      * Display the specified resource.
      *
