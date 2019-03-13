@@ -99,6 +99,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
+        // dd($user);
         return view('pages.user.profile')->withUser($user);
     }
 
