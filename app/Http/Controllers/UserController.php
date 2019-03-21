@@ -44,27 +44,11 @@ class UserController extends Controller
 
         if ($user->isAdministrator()) {
 
-            $translations = Translation::all();
-            $users = User::all();
-
-            // Total Translations this week
-            $weeklyTranslations = $translations->filter(function($trans, $key) {
-                $predicateO = $trans->created_at->gte(Carbon::today()->startOfWeek());
-                $predicateT = $trans->created_at->lte(Carbon::today()->endOfWeek());
-                return  $predicateO && $predicateT;
-            })->count();
-
-            $weeklyUsers = $users->filter(function($user, $key) {
-                $predicateO = $user->created_at->gte(Carbon::today()->startOfWeek());
-                $predicateT = $user->created_at->lte(Carbon::today()->endOfWeek());
-                return  $predicateO && $predicateT;
-            })->count();
-
             $data = [
-                'allTranslations' => $translations->count(),
-                'weeklyTranslations' => $weeklyTranslations,
-                'weeklyUsers' => $weeklyUsers,
-                'allUsers' => $users->count(),
+                'allTranslations' => 0,
+                'weeklyTranslations' => collect([]),
+                'weeklyUsers' => collect([]),
+                'allUsers' => 0,
             ];
 
             return view('pages.admin.home', $data);    
@@ -430,6 +414,16 @@ class UserController extends Controller
 
         if ($request->input('password') != null) {
             $user->password = bcrypt($request->input('password'));
+        }
+        
+        $data = $request->all();
+
+        if (isset($data['profile_picture'])) {
+            $file = $data['profile_picture'];
+            $name = uniqid() . "." . $file->getClientOriginalExtension();
+            $path = "/profiles/" . $name;
+            Storage::disk('local')->put($path, file_get_contents($data['profile_picture']));
+            $user->profile_picture = $name;
         }
 
         $user->save();

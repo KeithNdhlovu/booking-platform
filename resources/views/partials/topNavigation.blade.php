@@ -48,7 +48,7 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ route('public.profile-picture') }}" alt="user" class="profile-pic m-r-10" />
+                        <img src="{{  Auth::user()->profile_picture ? route('public.profile-picture') : asset('images/faces-clipart/pic-1.png') }}" alt="user" class="profile-pic m-r-10" />
                         {{ Auth::user()->first_name .' '. Auth::user()->last_name }}
                     </a>
                 </li>

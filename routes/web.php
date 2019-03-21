@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tickets', ['uses' => 'UserController@showTickets'])->name('user.tickets');
 });
 
-Route::group(['middleware'=> ['auth']], function () {
+Route::group(['middleware'=> ['auth', 'admin']], function () {
 
     Route::resource('users', 'UsersManagementController', [
         'names' => [
@@ -57,5 +57,7 @@ Route::group(['middleware'=> ['auth']], function () {
             'deleted',
         ],
     ]);
+
+    Route::get('/user-profile-picture/{id}', ['uses' => 'UsersManagementController@getProfileUrl'])->name('user.profile-picture');
     // End users
 });

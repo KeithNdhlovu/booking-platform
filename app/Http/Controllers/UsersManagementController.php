@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Traits\CaptureIpTrait;
+use File;
 use Auth;
+use Storage;
+use Response;
 use Illuminate\Http\Request;
 use jeremykenedy\LaravelRoles\Models\Role;
 use Validator;
@@ -136,8 +139,25 @@ class UsersManagementController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
         return view('usersmanagement.show-user')->withUser($user);
+    }
+
+    public function getProfileUrl($id)
+    {
+        $user = User::find($id);
+        $path = Storage::disk('local')->path("profiles/" . $user->profile_picture);
+
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
     }
 
     /**
@@ -211,6 +231,16 @@ class UsersManagementController extends Controller
 
         if ($request->input('role') != null) {
             $user->user_type = $request->input('role');
+        }
+
+        $data = $request->all();
+        
+        if (isset($data['profile_picture'])) {
+            $file = $data['profile_picture'];
+            $name = uniqid() . "." . $file->getClientOriginalExtension();
+            $path = "/profiles/" . $name;
+            Storage::disk('local')->put($path, file_get_contents($data['profile_picture']));
+            $user->profile_picture = $name;
         }
 
         $user->save();

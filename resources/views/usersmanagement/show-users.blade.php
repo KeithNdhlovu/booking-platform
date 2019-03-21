@@ -23,10 +23,29 @@
 @endsection
 
 @section('content')
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 col-8 align-self-center">
+            <h3 class="text-themecolor m-b-0 m-t-0">Users List</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
+                <li class="breadcrumb-item active">Users List</li>
+            </ol>
+        </div>
+        <div class="col-md-7 col-4 align-self-center">
+            
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">SHOWING ALL USERS</h4>
+        <div class="card-block">
             <div class="table-responsive">
             <table class="table table-striped data-table dataTable js-exportable">
                 <thead>
@@ -61,9 +80,16 @@
                             <td>{{$user->first_name}}</td>
                             <td>{{$user->last_name}}</td>
                             <td>
-                                <span class="badge badge-{{$user->isAdministrator() ? 'primary' : 'warning' }}">{{ ($user->user_role == 1) ? "Admin" : "User"}}</span>
+                                @if ($user->isAdministrator())
+                                    <span class="badge badge-danger">Admin</span>
+                                @elseif ($user->isUser())
+                                    <span class="badge badge-success">User</span>
+                                @elseif ($user->isAirportAdmin())
+                                    <span class="badge badge-primary">Air Admin</span>
+                                @endif
+                                
                             </td>
-                            <td>{{ $user->id_number }}</td>
+                            <td>{{ $user->id_number ? $user->id_number : 'N/A' }}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->updated_at }}</td>
                             <td>
@@ -97,7 +123,7 @@
     </div>
 
     @include('modals.modal-delete')
-    
+</div>
 @endsection
     
 @section('scripts')

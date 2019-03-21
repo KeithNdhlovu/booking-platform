@@ -24,14 +24,37 @@ class AirportFlightsDataSeeder extends Seeder
 
         $airports = json_decode(File::get($path));
 
-        dd($airports);
-
         foreach($airports as $_airport) {
-            $airport = Airport::create([
-                $_airport
-            ]);
+            
+            $airport = Airport::whereCode($_airport->code)->first();
 
-            $this->command->info('Creating Airport: '.$_airport->name);
+            if (!$airport) {
+            
+                Airport::create([
+                    "code" => $_airport->code,
+                    "lat" => $_airport->lat,
+                    "lon" => $_airport->lon,
+                    "name" => $_airport->name,
+                    "city" => $_airport->city,
+                    "state" => $_airport->state,
+                    "country" => $_airport->country,
+                    "woeid" => $_airport->woeid,
+                    "iata" => $_airport->iata,
+                    "country_iata" => $_airport->country_iata,
+                    "tz" => $_airport->tz,
+                    "phone" => $_airport->phone,
+                    "type" => $_airport->type,
+                    "email" => $_airport->email,
+                    "url" => $_airport->url,
+                    "runway_length" => $_airport->runway_length,
+                    "elev" => $_airport->elev,
+                    "icao" => $_airport->icao,
+                    "direct_flights" => $_airport->direct_flights,
+                    "carriers" => $_airport->carriers,
+                ]);
+
+                $this->command->info('Creating Airport: '.$_airport->name);
+            }
         }
 
         $this->command->info('Finished Creating Airports ...');
@@ -45,16 +68,24 @@ class AirportFlightsDataSeeder extends Seeder
         }
 
         $flights = json_decode(File::get($path));
-        dd($flights);
 
         foreach($flights as $_flight) {
-            $flight = Flight::create([
-                $_flight
-            ]);
+            
+            $flight = Flight::whereCode($_flight->code)->first();
 
-            $this->command->info('Creating Flight: '.$_flight->name);
+            if (!$flight) {
+                
+                Flight::create([
+                    'name' => $_flight->name,
+                    'code' => $_flight->code,
+                    'max_number_of_seats' => $_flight->max_number_of_seats,
+                    'number_of_seats_available' => $_flight->number_of_seats_available,
+                ]);
+
+                $this->command->info('Creating Flight: '.$_flight->name);
+            }
         }
 
-        $this->command->info('Creating Airport: '.$_airport->name);
+        $this->command->info('Finished Creating Flights');
     }
 }

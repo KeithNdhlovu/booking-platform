@@ -67,7 +67,7 @@
         <div class="col-lg-4 col-xlg-3 col-md-5">
             <div class="card">
                 <div class="card-block">
-                    <center class="m-t-30"> <img src="{{ route('public.profile-picture') }}" class="img-circle" width="150">
+                    <center class="m-t-30"> <img src="{{ Auth::user()->profile_picture ? route('public.profile-picture') : asset('images/faces-clipart/pic-1.png') }}" class="img-circle" width="150">
                         <h4 class="card-title m-t-10">{{ Auth::user()->first_name .' '. Auth::user()->last_name }}</h4>
                         <h6 class="card-subtitle">{{ Auth::user()->isAdministrator() ? 'Administrator' : 'User' }}</h6>
                         <!-- <div class="row text-center justify-content-md-center">
@@ -83,7 +83,7 @@
         <div class="col-lg-8 col-xlg-9 col-md-7">
             <div class="card">
                 <div class="card-block">
-                    {!! Form::model($user, array('action' => array('UsersManagementController@update', $user->id), 'method' => 'PUT')) !!}
+                    {!! Form::model($user, array('action' => array('UsersManagementController@update', $user->id), 'method' => 'PUT', 'enctype' => 'multipart/form-data')) !!}
 
                         {!! csrf_field() !!}
 
@@ -156,6 +156,13 @@
                                 
                                 </div>
                             </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <div class="input-group">
+                                <input type="file" name="profile_picture" class="form-control file-upload-info" placeholder="Upload Image">
                             </div>
                         </div>
                                             
