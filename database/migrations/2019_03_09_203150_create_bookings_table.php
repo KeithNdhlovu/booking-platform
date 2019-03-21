@@ -17,19 +17,14 @@ class CreateBookingsTable extends Migration
             
             $table->increments('id');
 
-            $table->string('from_location');
-            $table->string('to_location');
-            $table->timestamp('depart_date')->nullable();
-            $table->timestamp('return_date')->nullable();
-            $table->integer('number_of_adults');
-            $table->integer('number_of_children');
-            $table->string('travel_class');
-            $table->integer('travel_type');
-
+            $table->string('origin');
+            $table->string('destination');
             $table->string('origin_code');
             $table->string('destination_code');
-            $table->timestamp('depart_date');
-            $table->timestamp('arrive_date');
+            
+            $table->timestamp('depart_date')->nullable();
+            $table->timestamp('return_date')->nullable();
+            $table->timestamp('arrive_date')->nullable();
 
             $table->integer('duration_in_ms');
             $table->integer('amount');

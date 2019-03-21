@@ -12,14 +12,12 @@ class Booking extends Model
      * @var array
      */
     protected $fillable = [
-        'from_location',
-        'to_location',
+        'origin',
+        'destination',
+        'origin_code',
+        'destination_code',
         'depart_date',
         'return_date',
-        'number_of_adults',
-        'number_of_children',
-        'travel_class',
-        'travel_type',
         'flight_id',
         'origin_code',
         'destination_code',

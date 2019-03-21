@@ -31,9 +31,10 @@ class AirportFlightsDataSeeder extends Seeder
                 $_airport
             ]);
 
-            // Lets create a few flights for this airport
-
+            $this->command->info('Creating Airport: '.$_airport->name);
         }
+
+        $this->command->info('Finished Creating Airports ...');
 
 
         // Now lets create the main flights that operate between these Airports
@@ -42,5 +43,18 @@ class AirportFlightsDataSeeder extends Seeder
         if (!File::exists($path)) {
             dd("Flights JSON file does not exist!");
         }
+
+        $flights = json_decode(File::get($path));
+        dd($flights);
+
+        foreach($flights as $_flight) {
+            $flight = Flight::create([
+                $_flight
+            ]);
+
+            $this->command->info('Creating Flight: '.$_flight->name);
+        }
+
+        $this->command->info('Creating Airport: '.$_airport->name);
     }
 }
