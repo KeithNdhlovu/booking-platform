@@ -4,15 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Language extends Model
+class Airport extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'language';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +13,6 @@ class Language extends Model
      */
     protected $fillable = [
         'name',
-        'iso_code'
+        'location',
     ];
 }

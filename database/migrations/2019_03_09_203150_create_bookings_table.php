@@ -16,6 +16,7 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             
             $table->increments('id');
+
             $table->string('from_location');
             $table->string('to_location');
             $table->timestamp('depart_date')->nullable();
@@ -24,7 +25,10 @@ class CreateBookingsTable extends Migration
             $table->integer('number_of_children');
             $table->string('travel_class');
             $table->integer('travel_type');
-            
+
+            $table->integer('flight_id')->unsigned();
+            $table->foreign('flight_id')->references('id')->on('flights');
+
             $table->timestamps();
         });
     }

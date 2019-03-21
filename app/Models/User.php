@@ -12,6 +12,10 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
+    const USER_TYPE_ADMIN         = 1;
+    const USER_TYPE_USER          = 2;
+    const USER_TYPE_AIRPORT_ADMIN = 3;
+    
     /**
      * The database table used by the model.
      *
@@ -66,12 +70,17 @@ class User extends Authenticatable
 
     public function isAdministrator()
     {
-        return $this->user_type == 1;
+        return $this->user_type == User::USER_TYPE_ADMIN;
     }
 
     public function isUser()
     {
-        return $this->user_type == 2;
+        return $this->user_type == User::USER_TYPE_USER;
+    }
+
+    public function isAirportAdmin()
+    {
+        return $this->user_type == User::USER_TYPE_AIRPORT_ADMIN;
     }
 
 }
