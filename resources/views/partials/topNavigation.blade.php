@@ -4,19 +4,20 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <!-- Logo icon -->
                 <b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->    
                     <!-- Light Logo icon -->
-                    <img src="{{ asset('theme/dashboard/assets/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                    <img src="{{ asset('images/logo.png') }}" alt="homepage" class="light-logo" height="45"/>
+                    <!-- <i class="fa fa-plane"></i> -->
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span>
-                
                     <!-- Light Logo text -->    
-                    <img src="{{ asset('theme/dashboard/assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
+                    <!-- <img src="{{ asset('theme/dashboard/assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /> -->
+                    <b class="text-white">AirCode</b>
                 </span> 
             </a>
         </div>
@@ -33,11 +34,11 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                <!-- <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                     <form class="app-search">
                         <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
                     </form>
-                </li>
+                </li> -->
             </ul>
             <!-- ============================================================== -->
             <!-- User profile and search -->

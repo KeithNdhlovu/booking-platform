@@ -17,7 +17,7 @@
                 </ol>
             </div>
             <div class="col-md-7 col-4 align-self-center">
-                <a href="https://wrappixel.com/templates/materialpro/" class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"> Upgrade to Pro</a>
+                
             </div>
         </div>
         <!-- ============================================================== -->
