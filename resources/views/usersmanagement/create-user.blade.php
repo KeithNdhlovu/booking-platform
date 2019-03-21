@@ -8,15 +8,31 @@
 @endsection
 
 @section('content')
-
-  <div class="container">
-    <div class="row clearfix">
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 col-8 align-self-center">
+            <h3 class="text-themecolor m-b-0 m-t-0">Create User</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/users') }}">Users</a></li>
+                <li class="breadcrumb-item active">Create User</li>
+            </ol>
+        </div>
+        <div class="col-md-7 col-4 align-self-center">
+            
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+  
+    <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
-          <div class="card-body">
-            <div class="header">
-              <h2>CREATE NEW USER</h2>
-            </div>
+          <div class="card-block">
 
             {!! Form::open(array('action' => 'UsersManagementController@store')) !!}
 
@@ -140,7 +156,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 @endsection
 

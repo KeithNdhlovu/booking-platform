@@ -10,15 +10,27 @@
                 <li> 
                     <a class="waves-effect waves-dark" href="{{ url('/profile') }}" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                 </li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="{{ url('/tickets') }}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Tickets</span></a>
-                </li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="{{ url('/orders') }}" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Orders</span></a>
-                </li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="{{ url('/transactions') }}" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Transactions</span></a>
-                </li>
+                @if (Auth::user()->isUser())
+                    <li> 
+                        <a class="waves-effect waves-dark" href="{{ url('/tickets') }}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Tickets</span></a>
+                    </li>
+                    <li> 
+                        <a class="waves-effect waves-dark" href="{{ url('/orders') }}" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Orders</span></a>
+                    </li>
+                    <li> 
+                        <a class="waves-effect waves-dark" href="{{ url('/transactions') }}" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Transactions</span></a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->isAdministrator())
+                    <li> 
+                        <a class="waves-effect waves-dark" href="{{ url('/users') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">All Users</span></a>
+                    </li>
+                    <li> 
+                        <a class="waves-effect waves-dark" href="{{ url('/users/create') }}" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Create User</span></a>
+                    </li>
+                @endif
+
                 <!-- 
                 <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
                 </li>
