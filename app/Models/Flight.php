@@ -13,13 +13,10 @@ class Flight extends Model
      */
     protected $fillable = [
         'name',
-        'airport_id',
+        'code',
+        'max_number_of_seats',
+        'number_of_seats_available'
     ];
-
-    public function airport()
-    {
-        return $this->belongsTo(Airport::class);
-    }
 
     public function bookings()
     {

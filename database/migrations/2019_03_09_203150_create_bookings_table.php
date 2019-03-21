@@ -26,6 +26,15 @@ class CreateBookingsTable extends Migration
             $table->string('travel_class');
             $table->integer('travel_type');
 
+            $table->string('origin_code');
+            $table->string('destination_code');
+            $table->timestamp('depart_date');
+            $table->timestamp('arrive_date');
+
+            $table->integer('duration_in_ms');
+            $table->integer('amount');
+            $table->string('currency_value');
+
             $table->integer('flight_id')->unsigned();
             $table->foreign('flight_id')->references('id')->on('flights');
 

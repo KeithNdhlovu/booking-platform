@@ -21,6 +21,10 @@ class Booking extends Model
         'travel_class',
         'travel_type',
         'flight_id',
+        'origin_code',
+        'destination_code',
+        'depart_date',
+        'arrive_date',
     ];
 
 

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "FlySafair",
+    "code": "FA",
+    "max_number_of_seats": 313,
+    "number_of_seats_available": 313
+  },
+  {
+    "name": "Kulula",
+    "code": "MN",
+    "max_number_of_seats": 313,
+    "number_of_seats_available": 313
+  },
+  {
+    "name": "Mango",
+    "code": "JE",
+    "max_number_of_seats": 313,
+    "number_of_seats_available": 313
+  },
+  {
+    "name": "South African Airways",
+    "code": "SA",
+    "max_number_of_seats": 313,
+    "number_of_seats_available": 313
+  },
+  {
+    "name": "British Airways",
+    "code": "BA",
+    "max_number_of_seats": 313,
+    "number_of_seats_available": 313
+  }
+]

@@ -16,26 +16,31 @@ class AirportFlightsDataSeeder extends Seeder
     public function run()
     {
         // Lets start by creating a couple of Airports
-        $airportNames = collect(['OR Tambo International', 'Cape Town International', 'Lanceria']);
-        
-        $path = Storage::disk('local')->path("data/airports.json"); //storage_path() . "/data/airports.json";
+        $path = Storage::disk('local')->path("data/airports.json");
 
         if (!File::exists($path)) {
            dd("Airports JSON file does not exist!");
         }
 
-        $airports = json_decode(File::get($path)); //json_decode(file_get_contents($path), true); 
+        $airports = json_decode(File::get($path));
 
         dd($airports);
 
-        foreach($airportNames as $airportName) {
+        foreach($airports as $_airport) {
             $airport = Airport::create([
-                'name' => $airportName,
-                'location' => $airportName,
+                $_airport
             ]);
 
             // Lets create a few flights for this airport
 
+        }
+
+
+        // Now lets create the main flights that operate between these Airports
+        $path = Storage::disk('local')->path("data/flights.json");
+        
+        if (!File::exists($path)) {
+            dd("Flights JSON file does not exist!");
         }
     }
 }
