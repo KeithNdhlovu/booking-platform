@@ -23,15 +23,21 @@ class UsersManagementController extends Controller
         $roles = collect([]);
 
         $role = new \StdClass;
-        $role->id = 1;
+        $role->id = User::USER_TYPE_ADMIN;
         $role->name = 'Admin';
         $role->slug = 'Admin';
         $roles->push($role);
 
         $role = new \StdClass;
-        $role->id = 1;
+        $role->id = User::USER_TYPE_USER;;
         $role->name = 'User';
         $role->slug = 'User';
+        $roles->push($role);
+
+        $role = new \StdClass;
+        $role->id = User::USER_TYPE_AIRPORT_ADMIN;;
+        $role->name = 'AirportAdmin';
+        $role->slug = 'AirportAdmin';
         $roles->push($role);
 
         $this->roles = $roles;

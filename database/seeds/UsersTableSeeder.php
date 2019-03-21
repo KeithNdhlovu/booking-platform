@@ -13,10 +13,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // Roles
-        $adminRole = 1;
+        $adminRole = User::USER_TYPE_ADMIN;
 
         // Seed test Admin
-        $email = 'admin@translate.com';
+        $email = 'admin@aircode.com';
         $user = User::where('email', '=', $email)->first();
         
         if ($user === null) {

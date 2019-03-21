@@ -12,7 +12,25 @@ class Airport extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'location',
+        "code",
+        "lat",
+        "lon",
+        "name",
+        "city",
+        "state",
+        "country",
+        "woeid",
+        "iata",
+        "country_iata",
+        "tz",
+        "phone",
+        "type",
+        "email",
+        "url",
+        "runway_length",
+        "elev",
+        "icao",
+        "direct_flights",
+        "carriers",
     ];
 }

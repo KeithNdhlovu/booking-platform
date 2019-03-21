@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call(UsersTableSeeder::class);
-        $this->call(LanguagesTableSeeder::class);
+        $this->call(AirportFlightsDataSeeder::class);
         Model::reguard();
     }
 }
