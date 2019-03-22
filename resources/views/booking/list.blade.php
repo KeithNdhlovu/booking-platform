@@ -1,147 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.appCleanBookings')
 
-<head>
-	<!-- Required meta tags -->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-	<title>{{ config('app.name', Lang::get('titles.app')) }}</title>
+@section('content')
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Available Flights</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('booking') }}">Booking Form</a></li>
+                    <li class="breadcrumb-item active">Available Flights</li>
+                </ol>
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
 
-	<!-- endinject -->
-	<link rel="shortcut icon" href="favicon.png">
-
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-
-	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="{{ asset('landing/css/bootstrap.min.css') }}" />
-
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="{{ asset('landing/css/style.css') }}" />
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-</head>
-
-<body>
-	<div id="booking" class="section">
-		<div class="section-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-4">
-						<div class="booking-cta">
-							<h1>Book your flight today</h1>
-							<p>Check the availability of your flights, by provinding us with your trip information, otherwise go back by clicking the home button.</p>
-							<div class="form-btn">
-								<button id="back-button" class="home-btn">Home</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-7 col-xs-offset-1">
-						<div class="booking-form">
-							{!! Form::open(['route' => 'availability', 'novalidate'=>'novalidate', 'id'=>'availability', 'role' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
-								<div class="form-group">
-									<div class="form-checkbox">
-										<label for="roundtrip">
-											<input type="radio" id="roundtrip" name="flight-type">
-											<span></span>Roundtrip
-										</label>
-										<label for="one-way">
-											<input type="radio" id="one-way" name="flight-type">
-											<span></span>One way
-										</label>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<span class="form-label">Flying from</span>
-											<input class="form-control" type="text" placeholder="City or airport">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<span class="form-label">Flyning to</span>
-											<input class="form-control" type="text" placeholder="City or airport">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<span class="form-label">Departing</span>
-											<input class="form-control" type="date" required>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<span class="form-label">Returning</span>
-											<input class="form-control" type="date" required>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="form-group">
-											<span class="form-label">Adults (18+)</span>
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-											</select>
-											<span class="select-arrow"></span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<span class="form-label">Children (0-17)</span>
-											<select class="form-control">
-												<option>0</option>
-												<option>1</option>
-												<option>2</option>
-											</select>
-											<span class="select-arrow"></span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<span class="form-label">Travel class</span>
-											<select name="" class="form-control">
-												<option>Economy class</option>
-												<option>Business class</option>
-												<option>First class</option>
-											</select>
-											<span class="select-arrow"></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-btn">
-									<button class="submit-btn">Show flights</button>
-								</div>
-							{!! Form::close() !!}
-						</div>
-					</div>
+        <!-- Row -->
+        <!-- Row -->
+        <!-- <div class="row">
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="card">
+                    <img class="card-img-top" src="{{ asset('theme/dashboard/assets/images/background/profile-bg.jpg') }}" alt="Card image cap">
+                    <div class="card-block little-profile text-center">
+                        <div class="pro-img"><img src="{{ asset('theme/dashboard/assets/images/users/4.jpg') }}" alt="user" /></div>
+                        <h3 class="m-b-0">Angela Dominic</h3>
+                        <p>Web Designer &amp; Developer</p>
+                        <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Follow</a>
+                        <div class="row text-center m-t-20">
+                            <div class="col-lg-4 col-md-4 m-t-20">
+                                <h3 class="m-b-0 font-light">1099</h3><small>Articles</small></div>
+                            <div class="col-lg-4 col-md-4 m-t-20">
+                                <h3 class="m-b-0 font-light">23,469</h3><small>Followers</small></div>
+                            <div class="col-lg-4 col-md-4 m-t-20">
+                                <h3 class="m-b-0 font-light">6035</h3><small>Following</small></div>
+                        </div>
+                    </div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<script>
-	
-		var button = document.getElementById("back-button")
-		button.addEventListener('click', function() {
-			window.location.href = "{{ url('/') }}";
-		})
-	</script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+		</div> -->
 
-</html>
+		<div class="row" ng-app="bookingApp" ng-controller="bookingController">
+            <!-- Column -->
+            <div class="col-lg-12 col-xlg-12 col-md-12">
+                <!-- Column -->
+                <div class="card">
+                    <div class="card-block bg-info">
+                        <h4 class="text-white card-title">Outbound Flights</h4>
+                        <h6 class="card-subtitle text-white m-b-0 op-5">Depart Date: {{ $departDate }}</h6>
+                    </div>
+                    <div class="card-block">
+                        <div class="message-box contact-box">
+                            <!-- <h2 class="add-ct-btn"><button type="button" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button></h2> -->
+                            <div class="message-widget contact-widget">
+								<!-- Message -->
+								
+                                <a ng-cloack ng-repeat="flight in outboundFlights" href="#">
+                                    <div class="user-img"> 
+										<img ng-src="/images/carriers/carrier-<% flight.airlineCode %>.png" alt="flight-icon" class="img-circle"> 
+										<span class="profile-status online pull-right"></span> 
+									</div>
+									<div class="mail-contnet">
+										<h5><% flight._origin.city + "(" + flight.origCode + ")" %> -> <% flight._destination.city + "(" + flight.destCode + ")" %></h5>
+										<h5><% flight.departureDateTime %> -> <% flight.arrivalDateTime %></h5>
+										<span class="mail-desc">Class: <% flight.cabinClass %></span>
+										<span class="mail-desc">Duration: <% flight._duration %></span>
+										<h5>R <% flight._pricing.amount %></h5>
+									</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+@endsection
+@section('scripts')
+	@parent
+	<script src="{{ asset('js/angular/angular.min.js') }}"></script>
+	<script src="{{ asset('js/angular/angular-sanitize.min.js') }}"></script>
+	<script src="{{ asset('js/underscore/underscore.min.js') }}"></script>
+	<script src="{{ asset('js/moment/moment.js') }}"></script>
+
+	<script>
+    (function () {
+
+            // Controller
+            var bookingApp = angular.module('bookingApp', ['ngSanitize'], function($interpolateProvider) {
+                $interpolateProvider.startSymbol('<%');
+                $interpolateProvider.endSymbol('%>');
+            });
+
+            bookingApp.controller('bookingController', ['$scope','$http', '$window', '$filter','$timeout' , function($scope, $http, $window, $filter, $timeout) {
+				
+				$scope.data = {!! json_encode($data->response) !!};
+				$scope.airports = {!! $airports !!};
+
+				// When these two keys exist, then this data if for a return flight
+				$scope.isReturn = $scope.data.hasOwnProperty('inboundItineraries') && $scope.data.hasOwnProperty('outboundItineraries')
+
+				$scope.inboundFlights =[];
+				$scope.outboundFlights =[];
+				
+				if ($scope.isReturn) {
+					$scope.inboundFlights = _.map($scope.data.inboundItineraries, function(_data, i) {
+						let flight = _data.odoList[0].segments[0]
+						
+						flight._origin = _.findWhere($scope.airports, {code: flight.origCode})
+						flight._destination = _.findWhere($scope.airports, {code: flight.destCode})
+						flight._duration = moment.duration(flight.duration).hours() + " h" + moment.duration(flight.duration).minutes() + "m"
+						flight._pricing = {
+							amount: _data.amount,
+							currencyCode: _data.currencyCode,
+							decimalPlaces: _data.decimalPlaces,
+						};
+
+						flight.departureDateTime = moment(flight.departureDateTime).format('LLL')
+						flight.arrivalDateTime = moment(flight.arrivalDateTime).format('LLL')
+
+						return flight;
+					});
+
+
+					// $scope.outboundFlights = $scope.data.outboundItineraries;
+					$scope.outboundFlights = _.map($scope.data.outboundItineraries, function(_data, i) {
+						let flight = _data.odoList[0].segments[0]
+						
+						flight._origin = _.findWhere($scope.airports, {code: flight.origCode})
+						flight._destination = _.findWhere($scope.airports, {code: flight.destCode})
+						flight._duration = moment.duration(flight.duration).hours() + " h" + moment.duration(flight.duration).minutes() + "m"
+						flight._pricing = {
+							amount: _data.amount,
+							currencyCode: _data.currencyCode,
+							decimalPlaces: _data.decimalPlaces,
+						};
+
+						flight.departureDateTime = moment(flight.departureDateTime).format('LLL')
+						flight.arrivalDateTime = moment(flight.arrivalDateTime).format('LLL')
+
+						return flight;
+					});
+
+				} else {
+					$scope.outboundFlights = $scope.data.itineraries;
+				}
+
+            }]);
+        })();
+    </script>
+@endsection

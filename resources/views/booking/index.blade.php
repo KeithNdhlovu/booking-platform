@@ -37,6 +37,20 @@
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
+					<div class="col-xs-4"></div>
+					@if ($errors->any())
+						<div class="col-xs-7 col-xs-offset-1">
+							<div class="form-group">
+								@foreach ($errors->all() as $error)
+									<span class="help-block">
+										<label style="color: #ee6527;" class="error">{{ $error }}</label>
+									</span>
+								@endforeach
+							</div>
+						</div>
+					@endif
+				</div>
+				<div class="row">
 					<div class="col-xs-4">
 						<div class="booking-cta">
 							<h1>Book your flight today</h1>
@@ -48,15 +62,15 @@
 					</div>
 					<div class="col-xs-7 col-xs-offset-1">
 						<div class="booking-form">
-							{!! Form::open(['route' => 'availability', 'novalidate'=>'novalidate', 'id'=>'availability', 'role' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
+							{!! Form::open(['route' => 'availability', 'novalidate'=>'novalidate', 'id'=>'availability', 'role' => 'form', 'method' => 'POST'] ) !!}
 								<div class="form-group">
 									<div class="form-checkbox">
 										<label for="roundtrip">
-											<input type="radio" id="roundtrip" name="flight-type">
-											<span></span>Roundtrip
+											<input type="radio" id="roundtrip" name="tripType" value="return">
+											<span></span>Return
 										</label>
 										<label for="one-way">
-											<input type="radio" id="one-way" name="flight-type">
+											<input type="radio" id="one-way" name="tripType" value="oneway">
 											<span></span>One way
 										</label>
 									</div>
@@ -65,13 +79,25 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Flying from</span>
-											<input class="form-control" type="text" placeholder="City or airport">
+											<select name="origin" class="form-control">
+												<option value="">---</option>
+												@foreach($airports as $airport)
+													<option value="{{ $airport->code }}">({{ $airport->code }})&nbsp;{{ $airport->name }}</option>
+												@endforeach
+											</select>
+											<span class="select-arrow"></span>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Flyning to</span>
-											<input class="form-control" type="text" placeholder="City or airport">
+											<span class="form-label">Flying to</span>
+											<select name="destination" class="form-control">
+												<option value="">---</option>
+												@foreach($airports as $airport)
+													<option value="{{ $airport->code }}">({{ $airport->code }})&nbsp;{{ $airport->name }}</option>
+												@endforeach
+											</select>
+											<span class="select-arrow"></span>
 										</div>
 									</div>
 								</div>
@@ -79,21 +105,21 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Departing</span>
-											<input class="form-control" type="date" required>
+											<input name="depart_date" class="form-control" type="date" required>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Returning</span>
-											<input class="form-control" type="date" required>
+											<input name="return_date" class="form-control" type="date" required>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Adults (18+)</span>
-											<select class="form-control">
+											<select name="adult_count" class="form-control">
 												<option>1</option>
 												<option>2</option>
 												<option>3</option>
@@ -101,24 +127,13 @@
 											<span class="select-arrow"></span>
 										</div>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Children (0-17)</span>
-											<select class="form-control">
+											<select name="children_count" class="form-control">
 												<option>0</option>
 												<option>1</option>
 												<option>2</option>
-											</select>
-											<span class="select-arrow"></span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<span class="form-label">Travel class</span>
-											<select name="" class="form-control">
-												<option>Economy class</option>
-												<option>Business class</option>
-												<option>First class</option>
 											</select>
 											<span class="select-arrow"></span>
 										</div>
@@ -135,7 +150,6 @@
 		</div>
 	</div>
 	<script>
-	
 		var button = document.getElementById("back-button")
 		button.addEventListener('click', function() {
 			window.location.href = "{{ url('/') }}";
